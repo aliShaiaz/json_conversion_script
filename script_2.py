@@ -11,13 +11,13 @@ def combine_rename(source_folder, destination_folder):
 
     # Output File Structure
     new_combined_json_data = {
-        "description": "",
-        "tags": [],
-        "size": {
-            "height": 720,
-            "width": 1280
+        'description': '',
+        'tags': [],
+        'size': {
+            'height': 720,
+            'width': 1280
         },
-        "objects": []
+        'objects': []
     }
 
     # Aggregating All Files in 'source_folder'
