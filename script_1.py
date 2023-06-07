@@ -15,33 +15,33 @@ def formatJson(source_folder, destination_folder):
                 json_data = json.load(json_file)
 
             # Convert the JSON data to the desired format
-            # Defining "annotation_objects" & "license_plate" Structure
+            # Defining 'annotation_objects' & 'license_plate' Structure
             annotation_objects = {
-                "vehicle": {
-                    "presence": 0,
-                    "bbox": []
+                'vehicle': {
+                    'presence': 0,
+                    'bbox': []
                 },
-                "license_plate": {
-                    "presence": 0,
-                    "bbox": []
+                'license_plate': {
+                    'presence': 0,
+                    'bbox': []
                 }
             }
             annotation_attributes = {
-                "vehicle": {
-                    "Type": "",
-                    "Pose": "",
-                    "Model": "",
-                    "Make": "",
-                    "Color": ""
+                'vehicle': {
+                    'Type': '',
+                    'Pose': '',
+                    'Model': '',
+                    'Make': '',
+                    'Color': ''
                 },
-                "license_plate": {
-                    "Difficulty Score": 0,
-                    "Value": "",
-                    "Occlusion": 0
+                'license_plate': {
+                    'Difficulty Score': 0,
+                    'Value': '',
+                    'Occlusion': 0
                 }
             }
 
-            # Updating "annotation_objects" & "license_plate"
+            # Updating 'annotation_objects' & 'license_plate'
             for objects in json_data['objects']:
                 object_name = objects['classTitle'].replace(' ', '_').lower()
 
@@ -59,7 +59,7 @@ def formatJson(source_folder, destination_folder):
                 # Adding Attributes
                 tempDict = {}
                 for tags in objects['tags']:
-                    if (tags['name'] == "Difficulty Score"):
+                    if (tags['name'] == 'Difficulty Score'):
                         tempDict[tags['name']] = int(tags['value'])
                     else:
                         tempDict[tags['name']] = tags['value']
@@ -77,8 +77,8 @@ def formatJson(source_folder, destination_folder):
                     'dataset_name': filename,
                     'image_link': '',
                     'annotation_type': 'image',
-                    "annotation_objects": annotation_objects,
-                    "annotation_attributes": annotation_attributes
+                    'annotation_objects': annotation_objects,
+                    'annotation_attributes': annotation_attributes
                 }
             ]
 
